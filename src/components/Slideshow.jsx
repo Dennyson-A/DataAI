@@ -31,7 +31,7 @@ return () => clearInterval(interval);
 
 return (
 
-<div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-[400px]">
+<div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-[500px]">
 
 <div className="bg-blue-50 p-4 border-b">
 <h3 className="font-bold text-lg">
@@ -47,7 +47,7 @@ Expense Distribution in India
 <img
 src={slides[currentSlide].image}
 alt={slides[currentSlide].title}
-className="rounded-lg w-full h-[400px] object-cover transition-all duration-500"
+className="rounded-lg w-full h-[450px] object-cover transition-all duration-500"
 />
 
 </div>

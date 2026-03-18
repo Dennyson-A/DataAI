@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         {/* App Logo / Title */}
         <div className="mb-8">
           <h1 className="text-xl font-bold text-white tracking-wide">
-            ⚡ Data AI
+          LLM Ontology Explorer
           </h1>
           <p className="text-xs text-gray-400">
             Smart analytics assistant
