@@ -3,6 +3,9 @@ import FeatureCard from "../components/FeatureCard";
 import FeatureModal from "../components/FeatureModal"; 
 import Slideshow from "../components/Slideshow";
 import Workflow from "../components/Workflow";
+import AboutProject from "../components/AboutProject";
+import DomainSection from "../components/DomainSection";
+import TeamSection from "../components/TeamSection";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"; 
@@ -182,6 +185,8 @@ className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-
 Start Exploring Dataset
 </button>
 
+<AboutProject />
+
 {/* FEATURE CARDS */}
 <div className="grid sm:grid-cols-2 gap-4">
 
@@ -219,6 +224,10 @@ className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg 
 
 <div className="space-y-6">
 <Slideshow />
+
+{/* NEW DOMAIN SECTION */}
+<DomainSection />
+
 <Workflow />
 </div>
 
@@ -226,6 +235,8 @@ className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg 
 
 </div>
 
+
+<TeamSection />
 </div>
 
 {/* MODAL (Popup) */}
@@ -233,6 +244,8 @@ className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg 
 feature={selectedFeature}
 onClose={() => setSelectedFeature(null)}
 />
+
+
 
 </div>
 

@@ -20,14 +20,6 @@ LLM Ontology Explorer
 {/* RIGHT */}
 <div className="flex items-center space-x-4">
 
-{/* DETAILS BUTTON */}
-<button
-onClick={() => navigate("/details")}
-className="flex items-center space-x-2 text-blue-100 hover:text-white transition"
->
-<Info className="w-5 h-5"/>
-<span className="hidden sm:block text-sm">Details</span>
-</button>
 
 {/* LOGIN BUTTON */}
 <button
