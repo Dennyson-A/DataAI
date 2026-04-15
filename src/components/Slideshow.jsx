@@ -1,91 +1,143 @@
-import { useState, useEffect } from "react";
-import { ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 import food from "../assets/images/food.png";
-import fuel from "../assets/images/fuel.png";
+import fuel from "../assets/images/energy.png";
 import education from "../assets/images/durables.png";
-import housing from "../assets/images/service.png";
-import transport from "../assets/images/asset.png";
+import digital from "../assets/images/service.png";
+import asset from "../assets/images/assets.png";
 
 const Slideshow = () => {
+  const slides = [
+    { image: food, title: "Food Expenditure by Region" },
+    { image: fuel, title: "Fuel Expenditure Distribution" },
+    { image: education, title: "Educational Spending" },
+    { image: digital, title: "Digital Access Expenditure" },
+    { image: asset, title: "Asset Spending" }
+  ];
 
-const slides = [
-{ image: food, title: "Food Expenditure by Region" },
-{ image: fuel, title: "Fuel Expenditure Distribution" },
-{ image: education, title: "Durables Spending" },
-{ image: housing, title: "Service Expenditure" },
-{ image: transport, title: "Asset Spending" }
-];
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const intervalRef = useRef(null);
 
-const [currentSlide, setCurrentSlide] = useState(0);
+  // 🔁 Start / Reset Timer
+  const startTimer = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
 
-useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 3000);
+  };
 
-const interval = setInterval(() => {
-setCurrentSlide((prev) => (prev + 1) % slides.length);
-}, 5000);
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(intervalRef.current);
+  }, []);
 
-return () => clearInterval(interval);
+  // 👉 Controls (RESET TIMER on click)
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    startTimer();
+  };
 
-}, []);
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    startTimer();
+  };
 
-return (
+  const prevSlide = () => {
+    setCurrentSlide((prev) =>
+      prev === 0 ? slides.length - 1 : prev - 1
+    );
+    startTimer();
+  };
 
-<div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-[500px]">
+  return (
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-[500px]">
 
-<div className="bg-blue-50 p-4 border-b">
-<h3 className="font-bold text-lg">
-Expense Distribution in India
-</h3>
-<p className="text-sm text-gray-600">
-{slides[currentSlide].title}
-</p>
-</div>
+      {/* HEADER */}
+      <div className="bg-blue-50 p-4 border-b">
+        <h3 className="font-bold text-lg">
+          Expense Distribution in India
+        </h3>
+        <p className="text-sm text-gray-600">
+          {slides[currentSlide].title}
+        </p>
+      </div>
 
-<div className="p-5 flex justify-center">
+      {/* IMAGE */}
+      <div className="p-5 flex justify-center relative">
 
-<img
-src={slides[currentSlide].image}
-alt={slides[currentSlide].title}
-className="rounded-lg w-full h-[450px] object-cover transition-all duration-500"
-/>
+        {/* ⬅️ Previous Arrow */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow p-2 rounded-full hover:bg-gray-100"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
 
-</div>
+        <img
+          src={slides[currentSlide].image}
+          alt={slides[currentSlide].title}
+          className="rounded-lg w-full h-[450px] object-cover transition-all duration-500"
+        />
 
-<div className="px-5 py-4 flex justify-between items-center border-t">
+        {/* ➡️ Next Arrow */}
+        <button
+          onClick={nextSlide}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow p-2 rounded-full hover:bg-gray-100"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
 
-<div className="flex space-x-2">
+      </div>
 
-{slides.map((_, index) => (
-<button
-key={index}
-onClick={() => setCurrentSlide(index)}
-className={`transition-all rounded-full ${
-currentSlide === index
-? "bg-blue-600 w-3 h-3"
-: "bg-gray-300 w-2 h-2 hover:bg-gray-400"
-}`}
-></button>
-))}
+      {/* CONTROLS */}
+      <div className="px-5 py-4 grid grid-cols-3 items-center border-t">
 
-</div>
+        {/* LEFT - Previous */}
+        <div className="flex justify-start">
+        
+          <button
+            onClick={prevSlide}
+            className="text-blue-600 text-sm flex items-center space-x-1"
+          >
+             <ChevronLeft className="w-4 h-4" />
+            <span>
+            Previous
+            </span>
+          </button>
+        </div>
 
-<button
-onClick={() =>
-setCurrentSlide((currentSlide + 1) % slides.length)
-}
-className="text-blue-600 flex items-center space-x-1 text-sm"
->
-<span>Next</span>
-<ChevronRight className="w-4 h-4" />
-</button>
+        {/* CENTER - Dots */}
+        <div className="flex justify-center space-x-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all rounded-full ${
+                currentSlide === index
+                  ? "bg-blue-600 w-3 h-3"
+                  : "bg-gray-300 w-2 h-2 hover:bg-gray-400"
+              }`}
+            ></button>
+          ))}
+        </div>
 
-</div>
+        {/* RIGHT - Next */}
+        <div className="flex justify-end">
+          <button
+            onClick={nextSlide}
+            className="text-blue-600 text-sm flex items-center space-x-1"
+          >
+            <span>Next</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
 
-</div>
+      </div>
 
-);
-
+    </div>
+  );
 };
 
 export default Slideshow;

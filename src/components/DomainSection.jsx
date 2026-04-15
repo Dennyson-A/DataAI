@@ -2,27 +2,27 @@ const domains = [
     {
       title: "Food",
       desc: "Household food consumption patterns.",
-      link: "/data/food.csv"
+      link: "/data/food_dataset.csv"
     },
     {
       title: "Education",
       desc: "Spending on education.",
-      link: "/data/education.csv"
+      link: "/data/education_dataset.csv"
     },
     {
-      title: "Welfare",
-      desc: "Government welfare benefits.",
-      link: "/data/welfare.csv"
+      title: "Fuel and Energy",
+      desc: "Spending on household energy sources.",
+      link: "/data/energy_dataset.csv"
     },
     {
       title: "Digital Access",
       desc: "Internet and digital usage.",
-      link: "/data/digital.csv"
+      link: "/data/digital_dataset.csv"
     },
     {
       title: "Assets",
       desc: "Household asset ownership.",
-      link: "/data/assets.csv"
+      link: "/data/assets_dataset.csv"
     }
   ];
   
