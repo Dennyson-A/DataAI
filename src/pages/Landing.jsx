@@ -83,18 +83,21 @@ tags: ["Attributes", "Indicators", "Data"]
 },
 
 {
-    title: "Expenditure Categories Covered",
+    title: " Suggested Expenditure Categories Covered by Us",
     shortDescription: "6 major household expenditure categories analyzed.",
     fullDescription:
     "The dataset analyzes household spending across six major expenditure categories, visualized through regional distribution maps to understand economic patterns across India.",
     
     points: [
-    "Food Expenditure",
-    "Fuel & Energy Expenditure",
-    "Assets Expenditure",
-    "Durables Expenditure",
-    "Service & Out-of-Home Expenditure",
-    "Other Consumption Expenditure"
+    "Food ",
+    "Fuel & Energy",
+    "Assets ",
+    "Durables ",
+    "Service & Out-of-Home",
+    "Digial Access",
+    "Education",
+    "Government Welfare",
+    "Other Consumption "
     ],
     
     extra: [
@@ -171,9 +174,9 @@ style={{ backgroundImage: `url(${bg})` }}
 <div className="space-y-8">
 
 <h1 className="text-5xl font-bold text-white leading-tight">
-Explore Indian Household Expenditure Data
+Explore Household Consumption Expenditure Dataset
 <br />
-<span className="text-blue-200 font-normal">
+<span className="block text-blue-200 font-normal text-xl leading-tight">
 Using Natural Language Queries
 </span>
 </h1>
