@@ -6,6 +6,7 @@ import Workflow from "../components/Workflow";
 import AboutProject from "../components/AboutProject";
 import DomainSection from "../components/DomainSection";
 import TeamSection from "../components/TeamSection";
+import ProjectIdea from "../components/ProjectIdea";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"; 
@@ -238,6 +239,9 @@ className="w-full bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg 
 
 </div>
 
+<div className="px-6">
+  <ProjectIdea />
+</div>
 
 <TeamSection />
 </div>
@@ -248,9 +252,8 @@ feature={selectedFeature}
 onClose={() => setSelectedFeature(null)}
 />
 
-
-
 </div>
+
 
 );
 

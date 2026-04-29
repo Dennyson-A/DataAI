@@ -102,7 +102,7 @@ const TeamSection = () => {
 
           <div className="text-blue-200 text-sm leading-relaxed space-y-1">
             <p className="text-white font-medium text-base">
-              Ms. Nirmala S
+            Prof Nirmala Santiago
             </p>
 
             <p>Associate Professor</p>

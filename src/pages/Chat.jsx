@@ -79,7 +79,7 @@ export default function ChatPage() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  // 🚀 SEND MESSAGE
+  // SEND MESSAGE
   const handleSend = async () => {
     if (!input.trim() || loading ) return;
 
@@ -89,8 +89,8 @@ export default function ChatPage() {
 
   // 🔥 suggestions
   const suggestions = [
-    "Which state spends the most on food?",
-    "Compare urban vs rural expenditure",
+    "Give the top 5 States spent more on food",
+    "Give the food and fuel expense of karnataka",
     "Show digital access trends"
   ];
 
